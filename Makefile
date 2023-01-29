@@ -4,7 +4,7 @@ deploy:
 	@echo "Deploying..."
 	@flutter build web
 	-@git add ./web
-	-@git commit -m "deploy"
+	-@git commit -m "📦 Deploy web"
 	-@git push origin main
 
 run:
