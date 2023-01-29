@@ -9,6 +9,7 @@ deploy:
 	-@git add docs/
 	-@git commit -m "📦 Deploy web"
 	-@git push origin main
+	-@echo "Deployed! => https://ajjig.github.io/ipgeofinder/"
 
 run:
 	@echo "Running..."
