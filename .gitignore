@@ -12,6 +12,7 @@ migrate_working_dir/
 .vscode/
 ./lib/core/keys
 ./lib/core/keys/*
+*keys.dart
 
 # IntelliJ related
 *.iml
