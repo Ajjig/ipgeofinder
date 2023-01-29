@@ -1,1 +1,1 @@
-const kBaseLink = 'https://api.ipgeolocation.io';
+const kBaseLink = 'api.ipgeolocation.io';
