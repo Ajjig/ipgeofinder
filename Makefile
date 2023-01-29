@@ -1,9 +1,12 @@
 RM = rm -rf
+CP = cp -r
 
 deploy:
 	@echo "Deploying..."
 	@flutter build web
-	-@git add ./web
+	@$(RM) docs/*
+	@$(CP) build/web/* docs/
+	-@git add docs/
 	-@git commit -m "📦 Deploy web"
 	-@git push origin main
 
@@ -14,8 +17,6 @@ run:
 clean:
 	@echo "Cleaning..."
 	@flutter clean
-
-
 
 
 .DEFAULT_GOAL := deploy
