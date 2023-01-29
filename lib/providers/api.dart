@@ -5,7 +5,14 @@ import '../core/keys/keys.dart';
 class Api {
   static Future<http.Response> fetch(String ip) async {
     final response = await http.get(
-      Uri.parse("$kBaseLink/ipgeo?apiKey=$kApiKey&ip=$ip"),
+      Uri.https(
+        kBaseLink,
+        '/ipgeo',
+        {
+          'apiKey': kApiKey,
+          'ip': ip,
+        },
+      ),
     );
     return response;
   }
