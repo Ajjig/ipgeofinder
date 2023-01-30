@@ -9,9 +9,13 @@ const RESOURCES = {
 "assets/NOTICES": "840cfd781fa1ab4631696407024cb0fd",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
 "favicon.png": "bbed91f0050fc3bd954c92943ef2efc2",
-"index.html": "520385fab64fdd9d167f5938a4edb3ff",
-"/": "520385fab64fdd9d167f5938a4edb3ff",
-"main.dart.js": "5f17e586088dbed1558c40e677560eec",
+"icons/icon-192.png": "d3d8e190bdb6784375d1c03020d9b030",
+"icons/icon-512.png": "f2dbfbce21a63b4782e812b3796a6a27",
+"icons/icon-maskable-192.png": "8c7e57784d46dd922b7a314b6eefaa8a",
+"icons/icon-maskable-512.png": "f2ead81d1af4eff5fa6c9ebd4ca7640c",
+"index.html": "e251884ee8b0b6bddb90714dfeaa6d21",
+"/": "e251884ee8b0b6bddb90714dfeaa6d21",
+"main.dart.js": "dcb0e8a2fecb58d52ae8c4a2282fccfd",
 "manifest.json": "fb0c702aba8354dd776d768db9b70c56",
 "version.json": "2e684ab387e2fc4ad51bb3a3bdfb874c"
 };
