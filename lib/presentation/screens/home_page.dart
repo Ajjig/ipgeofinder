@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:ipgeofinder/logic/cubit/ip_cubit.dart';
+import 'package:ipgeofinder/presentation/theme/colors.dart';
 import 'package:latlong2/latlong.dart';
 import '../widgets/search_textfield.dart';
 
@@ -17,7 +18,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ipgeofinder', style: TextStyle(color: Colors.black)),
+        title: const Text('ipgeofinder', style: TextStyle(color: kSecondColor)),
       ),
       body: Stack(
         alignment: Alignment.topCenter,

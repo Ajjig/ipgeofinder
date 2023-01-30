@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ipgeofinder/presentation/theme/colors.dart';
 import 'presentation/screens/home_page.dart';
 
 void main() {
@@ -15,8 +16,8 @@ class MyApp extends StatelessWidget {
       title: 'ipgeofinder',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch().copyWith(
-          primary: const Color.fromARGB(255, 254, 191, 30),
-          secondary: Colors.black,
+          primary: kMainColor,
+          secondary: kSecondColor,
         ),
       ),
       home: HomePage(),
