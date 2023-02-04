@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:ipgeofinder/logic/cubit/ip_cubit.dart';
-import 'package:ipgeofinder/presentation/theme/colors.dart';
+import '../../logic/cubit/ip_cubit.dart';
+import '../theme/colors.dart';
 import 'package:latlong2/latlong.dart';
 import '../widgets/index.dart';
+import 'package:glassmorphism/glassmorphism.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
@@ -49,39 +50,56 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const SearchTextField(),
-                AnimatedContainer(
-                  duration: const Duration(seconds: 1),
-                  decoration: const BoxDecoration(
-                    color: Color.fromARGB(210, 255, 255, 255),
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(40),
-                      topRight: Radius.circular(40),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GlassmorphicContainer(
+                      width: double.infinity,
+                      height: 250,
+                      borderRadius: 40,
+                      blur: 5,
+                      alignment: Alignment.bottomCenter,
+                      border: 2,
+                      linearGradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          kMainColor.withOpacity(0.2),
+                          kMainColor.withOpacity(0.1),
+                        ],
+                        stops: const [0.1, 1],
+                      ),
+                      borderGradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          const Color(0xFFffffff).withOpacity(0.5),
+                          const Color(0xFFFFFFFF).withOpacity(0.5),
+                        ],
+                      ),
+                      child: BlocBuilder<IpCubit, IpState>(
+                        builder: (_, state) {
+                          if (state is IpInit) {
+                            return const IpInitWidget();
+                          } else if (state is IpLoading) {
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          } else if (state is IpLoaded) {
+                            // this to avoid calling moveTo() while building
+                            WidgetsBinding.instance.addPostFrameCallback((_) {
+                              moveTo(state.latitude, state.longitude);
+                            });
+                            return IpLoadedWidget(state: state);
+                          } else if (state is IpInvalid) {
+                            return const IpInvalidWidget();
+                          } else {
+                            return const IpErrorWidget();
+                          }
+                        },
+                      ),
                     ),
-                  ),
-                  height: 250,
-                  width: double.infinity,
-                  child: BlocBuilder<IpCubit, IpState>(
-                    builder: (_, state) {
-                      if (state is IpInit) {
-                        return const IpInitWidget();
-                      } else if (state is IpLoading) {
-                        return const Center(
-                          child: CircularProgressIndicator(),
-                        );
-                      } else if (state is IpLoaded) {
-                        // this to avoid calling moveTo() while building
-                        WidgetsBinding.instance.addPostFrameCallback((_) {
-                          moveTo(state.latitude, state.longitude);
-                        });
-                        return IpLoadedWidget(state: state);
-                      } else if (state is IpInvalid) {
-                        return const IpInvalidWidget();
-                      } else {
-                        return const IpErrorWidget();
-                      }
-                    },
-                  ),
-                )
+                ),
+
               ],
             ),
           ),
