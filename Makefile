@@ -8,7 +8,7 @@ deploy:
 	@$(CP) build/web/* docs/
 	-@git add docs/
 	-@git commit -m "📦 Deploy web"
-	-@git push origin main
+	-@git push origin
 	-@echo "Deployed! => https://ajjig.github.io/ipgeofinder/"
 
 run:
