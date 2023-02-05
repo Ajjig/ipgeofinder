@@ -4,7 +4,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:ipgeofinder/logic/cubit/ip_cubit.dart';
 import 'package:ipgeofinder/presentation/theme/colors.dart';
 import 'package:latlong2/latlong.dart';
-import '../widgets/search_textfield.dart';
+import '../widgets/index.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
@@ -52,7 +52,7 @@ class HomePage extends StatelessWidget {
                 AnimatedContainer(
                   duration: const Duration(seconds: 1),
                   decoration: const BoxDecoration(
-                    color:Color.fromARGB(210, 255, 255, 255),
+                    color: Color.fromARGB(210, 255, 255, 255),
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(40),
                       topRight: Radius.circular(40),
@@ -63,15 +63,7 @@ class HomePage extends StatelessWidget {
                   child: BlocBuilder<IpCubit, IpState>(
                     builder: (_, state) {
                       if (state is IpInit) {
-                        return const Center(
-                          child: Text(
-                            'Enter an IP address above',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        );
+                        return const IpInitWidget();
                       } else if (state is IpLoading) {
                         return const Center(
                           child: CircularProgressIndicator(),
@@ -81,50 +73,11 @@ class HomePage extends StatelessWidget {
                         WidgetsBinding.instance.addPostFrameCallback((_) {
                           moveTo(state.latitude, state.longitude);
                         });
-                        return Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'IP: ${state.ip}',
-                              style: const TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const SizedBox(height: 20),
-                            //TODO: More info
-                            const SizedBox(height: 20),
-                            Text(
-                              'City: ${state.city}',
-                              style: const TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const SizedBox(height: 20),
-                          ],
-                        );
+                        return IpLoadedWidget(state: state);
                       } else if (state is IpInvalid) {
-                        return const Center(
-                          child: Text(
-                            'Invalid IP address',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        );
+                        return const IpInvalidWidget();
                       } else {
-                        return const Center(
-                          child: Text(
-                            'Unexpected error',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.red,
-                            ),
-                          ),
-                        );
+                        return const IpErrorWidget();
                       }
                     },
                   ),
