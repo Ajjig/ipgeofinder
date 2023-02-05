@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ipgeofinder/logic/cubit/ip_cubit.dart';
 
-
 class IpLoadedWidget extends StatelessWidget {
   final IpLoaded state;
 
@@ -23,7 +22,18 @@ class IpLoadedWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 20),
-        //TODO: More info
+        Image.network(
+          state.countryFlag,
+          width: 120,
+        ),
+        const SizedBox(height: 20),
+        Text(
+          'Country: ${state.countryName}',
+          style: const TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         const SizedBox(height: 20),
         Text(
           'City: ${state.city}',
@@ -33,6 +43,13 @@ class IpLoadedWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 20),
+        Text(
+          'Postition: ${state.latitude} ${state.longitude}',
+          style: const TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ],
     );
   }
