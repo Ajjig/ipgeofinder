@@ -20,5 +20,5 @@ clean:
 	@flutter clean
 
 
-.DEFAULT_GOAL := deploy
+.DEFAULT_GOAL := run
 .PHONY: deploy run clean
