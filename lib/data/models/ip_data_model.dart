@@ -52,7 +52,8 @@ class IpDataModel extends Equatable {
       callingCode: json['calling_code'] ?? '___',
       countryTld: json['country_tld'] ?? '___',
       languages: json['languages'] ?? '___',
-      countryFlag: 'https://countryflagsapi.com/png/${json['country_code2'].toLowerCase() ?? 'us'}',
+      countryFlag:
+          'https://www.countryflagicons.com/SHINY/64/${json['countryCode2'] ?? 'US'}.png',
       isp: json['isp'] ?? '___',
       connectionType: json['connection_type'] ?? '___',
     );
