@@ -1,2 +1,2 @@
 # ipgeofinder
-App uses a person's IP address to determine their geographic location.
+App uses an IP address to determine it's geographic location in the map.
